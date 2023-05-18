@@ -1,0 +1,6 @@
+
+DeviceEvents
+| where ActionType startswith 'ASR'
+| project DeviceName, ActionType
+| evaluate pivot(ActionType)
+

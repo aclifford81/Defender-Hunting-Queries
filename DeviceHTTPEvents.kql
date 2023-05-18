@@ -1,0 +1,4 @@
+DeviceNetworkEvents
+| where RemoteUrl contains "http"
+| where DeviceName contains "Clifftop"
+| project Timestamp, RemoteUrl, RemoteIP, RemotePort, RemoteIPType

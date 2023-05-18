@@ -1,0 +1,6 @@
+DeviceEvents
+| where Timestamp > ago(30d)
+| where ActionType startswith "Asr"
+| where isnotempty(InitiatingProcessCommandLine)
+| summarize ['ASR Hit Count']=count()by ActionType, InitiatingProcessCommandLine, FolderPath
+| sort by ['ASR Hit Count'] desc 

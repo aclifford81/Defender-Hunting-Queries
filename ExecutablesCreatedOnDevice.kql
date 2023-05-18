@@ -1,0 +1,9 @@
+let ExecutableFileExtentions = dynamic(['bat', 'cmd', 'com', 'cpl', 'ex', 'exe', 'jse', 'lnk','msc', 'ps1', 'reg', 'vb', 'vbe', 'ws', 'wsf']);
+DeviceFileEvents
+| where Timestamp > ago(1h)
+| where FolderPath contains "Users"
+| where FolderPath !contains "AppData"
+| where FileName has_any (ExecutableFileExtentions)
+| where ActionType == "FileCreated"
+| where DeviceName contains "Clifftop"
+| project Timestamp, FileName, FolderPath, MD5

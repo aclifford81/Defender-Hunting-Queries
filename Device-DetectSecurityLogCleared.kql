@@ -1,0 +1,7 @@
+DeviceEvents
+| where ActionType == "SecurityLogCleared"
+| project
+    Timestamp,
+    DeviceName,
+    InitiatingProcessAccountDomain,
+    InitiatingProcessAccountName
